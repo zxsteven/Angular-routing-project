@@ -25,4 +25,24 @@ var app = angular.module('app', ['ngRoute'])
       templateUrl: '/public/app/templates/allActivities.html'
   })
   .otherwise('/');
-}]);
+}])
+
+.run(['$rootscope', '$log', function($rootscope, $log){
+  $rootscope.$on('$routeChangeSuccess', function(event, current, previous){
+    $log.debug('successfully changed routes');
+    
+    $log.debug(event);
+    $log.debug(current);
+    $log.debug(previous);
+  });
+  
+  $rootscope.$on('$routeChangeError', function(event, current, previous, rejection){
+    $log.debug('error changing routes');
+    
+    $log.debug(event);
+    $log.debug(current);
+    $log.debug(previous);
+    $log.debug(rejection)
+  });
+  
+}])
