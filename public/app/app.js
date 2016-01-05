@@ -24,6 +24,16 @@ var app = angular.module('app', ['ngRoute'])
       controllerAs: 'activities',
       templateUrl: '/public/app/templates/allActivities.html'
   })
+    .when('/classrooms/:id', {
+      controller: 'ClassroomController',
+      controllerAs: 'classroom',
+      templateUrl: '/public/app/templates/classroom.html'
+  })
+    .when('/classrooms/:id/detail/:month?', {
+      controller: 'ClassroomController',
+      controllerAs: 'classroom',
+      templateUrl: '/public/app/templates/classroomDetail.html'
+  })
   .otherwise('/');
 }])
 
